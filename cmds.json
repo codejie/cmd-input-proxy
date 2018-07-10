@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "cmds": [
+        {
+            "title": "help",
+            "target": 1,
+            "required": [],
+            "headerRequired": [],
+            "handler": ""       
+        }
+    ]
+}
