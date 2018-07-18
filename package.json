@@ -9,6 +9,6 @@
   "author": "Jie.",
   "license": "ISC",
   "dependencies": {
-    "poplar-logger": "^1.0.2"
+    "poplar-logger": "^1.0.3"
   }
 }

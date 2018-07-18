@@ -19,6 +19,12 @@ class Conn {
         this.initEvents();
     }
 
+    close () {
+        if (this.conn) {
+            this.conn.end();
+        }
+    }
+
     initEvents () {
         this.conn.on('data', buf => {
             Logger.trace('data - ', buf);
@@ -29,7 +35,11 @@ class Conn {
                 this.buffer = Buffer.concat([this.buffer, buf]);
             }
             const pos = this.buffer.indexOf(END_FLAG);
-            if (pos !== -1) {
+            if (pos === 0) {
+                this.buffer = null;
+                this.outputPrompt();
+                return;
+            } else {
                 this.onCmdBuffer(this.buffer.slice(0, pos));
                 if (pos === this.buffer.length - 2) {
                     this.buffer = null;
@@ -87,7 +97,6 @@ class Conn {
         }
         // this.outputResult(ret);
     }
-
 }
 
 module.exports = Conn;

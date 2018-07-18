@@ -1,12 +1,7 @@
 'use strict'
 
 const Server = require('./src/server');
+const CmdBase = require('./src/cmds/base');
 
-const opts = {
-    port: 3000,
-
-};
-
-const server = new Server(opts);
-
-server.start();
+module.exports = Server;
+module.exports.CmdBase = CmdBase;

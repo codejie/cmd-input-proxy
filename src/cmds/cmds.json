@@ -2,11 +2,15 @@
     "version": 1,
     "cmds": [
         {
+            "title": "exit",
+            "handler": "./cmds/exit.js"
+        },
+        {
             "title": "help",
             "target": 1,
             "required": [],
             "headerRequired": [],
-            "handler": ""       
+            "handler": "./cmds/help.js"       
         }
     ]
 }
