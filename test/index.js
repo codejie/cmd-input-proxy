@@ -6,7 +6,7 @@ const Server = require('../src/server');
 
 const opts = {
     // logger: null,
-    port: 3000,
+    port: 3001,
 
 };
 

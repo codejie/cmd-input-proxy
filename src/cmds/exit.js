@@ -8,7 +8,12 @@ class Exit extends Base {
     }
 
     handle (conn, args) {
-        conn.close();
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                conn.close();
+            }, 500);
+            resolve('disconnect - ' + conn.index);
+        });
     }
 }
 

@@ -61,7 +61,7 @@ const CmdParser = {
                 .catch(err => {
                     reject({
                         code: -1,
-                        error: err
+                        message: err.message
                     });
                 });
         });
