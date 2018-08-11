@@ -16,6 +16,9 @@ class Conn {
         this.headers = [];
         this.buffer = null;
 
+        // this.cmds = [];
+        // this.cmdIndex = -1;
+
         this.initEvents();
     }
 
@@ -82,9 +85,18 @@ class Conn {
         Logger.trace('recv - ', buffer.toString('utf8'));
         let ret = null;
         try {
-            CmdParser.parse(this, buffer)
+            const line = buffer.toString('utf8');
+            Logger.trace('line = ', line);    
+            
+            // this.cmds.push(line);
+            
+            CmdParser.parse(this, line)
                 .then(result => {
-                    ret =  JSON.stringify(result);
+                    if (typeof result === 'object') {
+                        ret =  JSON.stringify(result, null, 2);
+                    } else {
+                        ret = result;
+                    }
                     this.outputResult(ret);
                 })
                 .catch(err => {

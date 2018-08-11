@@ -1,13 +1,13 @@
 {
-  "name": "cmd-input-server",
-  "version": "1.0.0",
+  "name": "cmd-input-proxy",
+  "version": "1.0.2",
   "description": "socket server is used to receive the command input from telnet client.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/index.js"
   },
   "author": "Jie.",
-  "license": "ISC",
+  "license": "FREE",
   "dependencies": {
     "poplar-logger": "^1.0.3"
   }

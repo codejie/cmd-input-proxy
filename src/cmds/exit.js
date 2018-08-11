@@ -15,6 +15,13 @@ class Exit extends Base {
             resolve('disconnect - ' + conn.index);
         });
     }
+
+    usage (conn, args) {
+        return {
+            info: 'exit connection.',
+            usage: 'exit'
+        }
+    }
 }
 
 module.exports = Exit;

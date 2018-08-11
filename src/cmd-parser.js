@@ -9,16 +9,17 @@ const CmdParser = {
     init: function (cmds) {
         for (let i = 0; i < cmds.length; ++ i) {
             const cmd = cmds[i];
-            const t = require(cmd.handler);
-            cmd.handler = new t();
-            // const f = cmd.handler.handle;
+            cmd.handler = new (require(cmd.handler))();
+            if (cmd.parserRequried) {
+                cmd.handler.parser(this);
+            }
             this.commands[cmd.title] = cmd;
         }
     },
 
-    parse: function (conn, buffer) {
-        const line = buffer.toString('utf8');
-        Logger.trace('line = ', line);
+    parse: function (conn, line) {
+        // const line = buffer.toString('utf8');
+        // Logger.trace('line = ', line);
         const items = line.split(SPLIT_FLAG);
         Logger.trace('items = ', items);
 
@@ -53,16 +54,18 @@ const CmdParser = {
         return new Promise((resolve, reject) => {
             handler.handle(conn, cmd.args)
                 .then(result => {
-                    resolve({
-                        code: 0,
-                        result: result
-                    });
+                    resolve(result);
+                    // {
+                    //     code: 0,
+                    //     result: result
+                    // });
                 })
                 .catch(err => {
-                    reject({
-                        code: -1,
-                        message: err.message
-                    });
+                    reject(err);
+                    // reject({
+                    //     code: -1,
+                    //     message: ((err instanceof Error) ? err.message : err)
+                    // });
                 });
         });
     },
