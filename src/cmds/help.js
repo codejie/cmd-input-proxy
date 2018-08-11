@@ -12,14 +12,21 @@ class Help extends Base {
                     const handler = cmds[cmd].handler;
                     ret[cmd] = {
                         title: cmds[cmd].title,
-                        usage: (handler.usage ? handler.usage() : 'no usage info')
+                        // usage: (handler.usage ? handler.usage() : 'no usage info')
                     }
+                    if (handler.usage) {
+                        ret[cmd].usage = handler.usage();
+                    }                    
                 }
                 resolve(ret);
             } else {
                 const cmd = this.parser.commands[args.cmd];
                 if (cmd) {
-                    resolve(cmd.handler.usage());
+                    if (cmd.handler.usage) {
+                        resolve(cmd.handler.usage());
+                    } else {
+                        resolve('no usage info');
+                    }
                 } else {
                     reject('unknown command -' + cmd);
                 }

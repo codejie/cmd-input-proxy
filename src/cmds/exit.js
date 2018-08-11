@@ -16,12 +16,12 @@ class Exit extends Base {
         });
     }
 
-    usage (conn, args) {
-        return {
-            info: 'exit connection.',
-            usage: 'exit'
-        }
-    }
+    // usage (conn, args) {
+    //     return {
+    //         info: 'exit connection.',
+    //         usage: 'exit'
+    //     }
+    // }
 }
 
 module.exports = Exit;

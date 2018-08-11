@@ -93,7 +93,7 @@ class Conn {
             CmdParser.parse(this, line)
                 .then(result => {
                     if (typeof result === 'object') {
-                        ret =  JSON.stringify(result, null, 2);
+                        ret = JSON.stringify(result, null, 2);
                     } else {
                         ret = result;
                     }

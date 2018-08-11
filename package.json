@@ -1,6 +1,6 @@
 {
   "name": "cmd-input-proxy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "socket server is used to receive the command input from telnet client.",
   "main": "index.js",
   "scripts": {
