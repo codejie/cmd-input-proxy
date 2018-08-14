@@ -28,7 +28,7 @@ class Help extends Base {
                         resolve('no usage info');
                     }
                 } else {
-                    reject('unknown command -' + cmd);
+                    reject('unknown command - ' + args.cmd);
                 }
             }
         });

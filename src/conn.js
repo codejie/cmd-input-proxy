@@ -100,7 +100,11 @@ class Conn {
                     this.outputResult(ret);
                 })
                 .catch(err => {
-                    ret = err.message;
+                    if (err instanceof Error) {
+                        ret = err.message;
+                    } else {
+                        ret = err;
+                    }
                     this.outputResult(ret);
                 });
         } catch (err) {
